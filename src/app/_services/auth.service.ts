@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { XmlToJsonService } from './xmlToJsonService.service';
 import { TokenResponse } from './../_models/tokenresponse';
-// import { parseString } from 'xml2js';
+import { parseString } from 'xml2js';
 
 
 @Injectable({
@@ -14,8 +14,9 @@ import { TokenResponse } from './../_models/tokenresponse';
 export class AuthService {
   baseUrl = 'https://centralusdtpilot00.epicorsaas.com/SaaS506Third/';
   tokenResponse: TokenResponse;
+  
 
-  constructor(private httpClient: HttpClient, private xmlToJsonService: XmlToJsonService) { }
+  constructor(private httpClient: HttpClient) { }
 
   login(model: any) {
 
@@ -34,11 +35,18 @@ export class AuthService {
         map((response: any) => {
           console.log('1st - RESPONSE IN AUTH SERVICE - SHOULD BE xml');
           console.log(response);
-          this.xmlToJsonService.parse(response.toString()).subscribe();  // do we need subscribe to the xml service?
+
+          parseString(response, ((err, result) => {
+            console.log('the result in the AUTH Service service is...');
+            console.log(result.Token.AccessToken); // do we need to stringify? make the interface match exactly? or eliminate it?
+            localStorage.setItem('token', result.Token.AccessToken);
+            localStorage.setItem('user', JSON.stringify(model.username));
+          }));
+
         })
       );
   }
 
-  
+
 
 }

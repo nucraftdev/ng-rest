@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-import { XmlToJsonService } from './xmlToJsonService.service';
 import { TokenResponse } from './../_models/tokenresponse';
 import { parseString } from 'xml2js';
 
@@ -14,7 +13,6 @@ import { parseString } from 'xml2js';
 export class AuthService {
   baseUrl = 'https://centralusdtpilot00.epicorsaas.com/SaaS506Third/';
   tokenResponse: TokenResponse;
-  
 
   constructor(private httpClient: HttpClient) { }
 
@@ -38,9 +36,9 @@ export class AuthService {
 
           parseString(response, ((err, result) => {
             console.log('the result in the AUTH Service service is...');
-            console.log(result.Token.AccessToken); // do we need to stringify? make the interface match exactly? or eliminate it?
+            console.log(result.Token.AccessToken); // make the interface match exactly? or eliminate it?
             localStorage.setItem('token', result.Token.AccessToken);
-            localStorage.setItem('user', JSON.stringify(model.username));
+            localStorage.setItem('user', model.username);
           }));
 
         })

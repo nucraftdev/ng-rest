@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { AuthService } from './_services/auth.service';
-import { XmlToJsonService } from './_services/xmlToJsonService.service';
 
 @NgModule({
   declarations: [
@@ -22,8 +21,7 @@ import { XmlToJsonService } from './_services/xmlToJsonService.service';
     AppRoutingModule
   ],
   providers: [
-    AuthService,
-    XmlToJsonService
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

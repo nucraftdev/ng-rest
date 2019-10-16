@@ -3,19 +3,18 @@
     <a class="navbar-brand" href="#">Epicor REST</a>
 
     <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Users</a>
+        <a class="nav-link" [routerLink]="['/home']">Home</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Person Contact</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/user-list']">Users</a>
       </li>
-      <li *ngIf="loggedIn()" class="nav-item">
-        <a class="nav-link" (click)="logout()">Logout</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/percon-list']">Percons</a>
       </li>
-
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/workforce-list']">Workforces</a>
+      </li>
     </ul>
 
     <div class="dropdown" *ngIf="loggedIn()" dropdown>

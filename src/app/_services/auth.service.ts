@@ -38,7 +38,7 @@ export class AuthService {
             console.log('the result in the AUTH Service service is...');
             console.log(result.Token.AccessToken); // make the interface match exactly? or eliminate it?
             localStorage.setItem('token', result.Token.AccessToken);
-            localStorage.setItem('user', model.username);
+            // localStorage.setItem('user', model.username);
           }));
 
         })

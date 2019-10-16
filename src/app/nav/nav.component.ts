@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
   model: any = {};
-  baseUrl = 'https://centralusdtpilot00.epicorsaas.com/SaaS506Third/';
 
  constructor(private authService: AuthService) { }
 
@@ -22,6 +21,16 @@ export class NavComponent implements OnInit {
       console.log('login ERROR');
       console.log(error);
     });
+  }
+
+  loggedIn() {
+    const token = localStorage.getItem('token');
+    return !!token;
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    console.log('Logged Out');
   }
 
 }

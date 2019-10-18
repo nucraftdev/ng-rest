@@ -2,7 +2,37 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-2 col-md-3 col-sm-6">
-      <p *ngFor="let user of userfiles">{{user.UserID}}</p>
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>UserID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Security Mgr</th>
+            <th>Disabled</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of userfiles">
+            <td>{{user.UserID}}</td>
+            <td>{{user.Name}}</td>
+            <td>{{user.EMailAddress}}</td>
+            <td>
+              <div class="form-check">
+                <input class="form-check-input position-static" type="checkbox" id="SecurityMgr"
+                  [checked]="user.SecurityMgr" disabled>
+              </div>
+            </td>
+            <td>
+              <div class="form-check">
+                <input class="form-check-input position-static" type="checkbox" id="UserDisabled"
+                  [checked]="user.UserDisabled" disabled>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
 </div>

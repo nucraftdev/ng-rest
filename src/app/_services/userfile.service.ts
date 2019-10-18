@@ -4,12 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Userfile } from '../_models/userfile';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    Authorization: 'Bearer ' + localStorage.getItem('token')
-  })
-};
-
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +16,7 @@ export class UserfileService {
 constructor(private http: HttpClient) { }
 
   getUsers(): Observable<Userfile[]> {
-    return this.http.get<Userfile[]>(this.getUrl, httpOptions);
+    return this.http.get<Userfile[]>(this.getUrl);
   }
 
   // TODO: add additional method to get one userfile record

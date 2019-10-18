@@ -17,6 +17,11 @@ import { UserListComponent } from './user-list/user-list.component';
 import { WorkforceListComponent } from './workforce-list/workforce-list.component';
 import { appRoutes } from './routes';
 import { UserfileService } from './_services/userfile.service';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+   return localStorage.getItem('token');
+}
 
 @NgModule({
    declarations: [
@@ -34,7 +39,21 @@ import { UserfileService } from './_services/userfile.service';
       AppRoutingModule,
       BrowserAnimationsModule,
       BsDropdownModule.forRoot(),
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(appRoutes),
+      JwtModule.forRoot({
+         config: {
+            // tslint:disable-next-line:object-literal-shorthand
+            tokenGetter: tokenGetter,
+            whitelistedDomains: [
+               'centralusdtadtl03.epicorsaas.com',
+               'centralusdtpilot00.epicorsaas.com'
+            ],
+            blacklistedRoutes: [
+               'centralusdtadtl03.epicorsaas.com/TokenResource.svc',
+               'centralusdtpilot00.epicorsaas.com/TokenResource.svc'
+            ]
+         }
+      })
    ],
    providers: [
       AuthService,

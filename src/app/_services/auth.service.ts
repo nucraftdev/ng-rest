@@ -7,6 +7,7 @@ import { TokenResponse } from './../_models/tokenresponse';
 import { parseString } from 'xml2js';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
+import { User } from '../_models/user';
 
 
 @Injectable({
@@ -21,7 +22,7 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-  login(model: any) {
+  login(model: User) {
 
     const httpOptions: any = {
       headers: new HttpHeaders({
@@ -36,8 +37,6 @@ export class AuthService {
     return this.httpClient.post(this.baseUrl + 'TokenResource.svc/', model, httpOptions)
       .pipe(
         map((response: any) => {
-          // console.log('1st - RESPONSE IN AUTH SERVICE - SHOULD BE xml');
-          // console.log(response);
 
           parseString(response, ((err, result) => {
             const token = result.Token.AccessToken.toString();

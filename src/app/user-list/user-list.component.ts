@@ -13,6 +13,15 @@ export class UserListComponent implements OnInit {
 
   constructor(private userfileService: UserfileService, private alertify: AlertifyService) { }
 
+  columnDefs = [
+    { headerName: 'UserID', field: 'UserID', sortable: true, filter: true },
+    { headerName: 'Name', field: 'Name', sortable: true, filter: true },
+    { headerName: 'EMailAddress', field: 'EMailAddress', sortable: true, filter: false },
+    { headerName: 'SecurityMgr', field: 'SecurityMgr', sortable: true, filter: true },
+    { headerName: 'UserDisabled', field: 'UserDisabled', sortable: true, filter: false },
+    { headerName: 'PasswordEmail', field: 'PasswordEmail', sortable: true, filter: false }
+  ];
+
   ngOnInit() {
     this.loadUsers();
   }

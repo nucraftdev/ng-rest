@@ -6,13 +6,15 @@ import { map } from 'rxjs/operators';
 import { TokenResponse } from './../_models/tokenresponse';
 import { parseString } from 'xml2js';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl = 'https://centralusdtpilot00.epicorsaas.com/SaaS506Third/';
+  baseUrl = environment.apiUrl;
+  // https://centralusdtpilot00.epicorsaas.com OR https://centralusdtadtl03.epicorsaas.com/SaaS506Third/
   tokenResponse: TokenResponse;
   jwtHelper = new JwtHelperService();
   decodedToken: any;

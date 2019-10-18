@@ -16,6 +16,7 @@ import { PerconListComponent } from './percon-list/percon-list.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { WorkforceListComponent } from './workforce-list/workforce-list.component';
 import { appRoutes } from './routes';
+import { UserfileService } from './_services/userfile.service';
 
 @NgModule({
    declarations: [
@@ -36,7 +37,8 @@ import { appRoutes } from './routes';
       RouterModule.forRoot(appRoutes)
    ],
    providers: [
-      AuthService
+      AuthService,
+      UserfileService
    ],
    bootstrap: [
       AppComponent

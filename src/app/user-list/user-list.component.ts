@@ -18,8 +18,7 @@ export class UserListComponent implements OnInit {
     { headerName: 'Name', field: 'Name', sortable: true, filter: true },
     { headerName: 'EMailAddress', field: 'EMailAddress', sortable: true, filter: false },
     { headerName: 'SecurityMgr', field: 'SecurityMgr', sortable: true, filter: true },
-    { headerName: 'UserDisabled', field: 'UserDisabled', sortable: true, filter: false },
-    { headerName: 'PasswordEmail', field: 'PasswordEmail', sortable: true, filter: false }
+    { headerName: 'UserDisabled', field: 'UserDisabled', sortable: true, filter: false }
   ];
 
   ngOnInit() {

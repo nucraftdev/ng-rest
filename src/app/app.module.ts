@@ -20,7 +20,7 @@ import { UserfileService } from './_services/userfile.service';
 import { UserListComponent } from './user-list/user-list.component';
 import { WorkforceListComponent } from './workforce-list/workforce-list.component';
 
-export function tokenGetter() {
+export function tokenGetterFn() {
    return localStorage.getItem('token');
 }
 
@@ -44,14 +44,15 @@ export function tokenGetter() {
       JwtModule.forRoot({
          config: {
             // tslint:disable-next-line:object-literal-shorthand
-            tokenGetter: tokenGetter,
+            tokenGetter: tokenGetterFn,
             whitelistedDomains: [
-               'centralusdtadtl03.epicorsaas.com',
-               'centralusdtpilot00.epicorsaas.com'
+               'centralusdtpilot00.epicorsaas.com',
+               'centralusdtadtl03.epicorsaas.com'
+
             ],
             blacklistedRoutes: [
-               'centralusdtadtl03.epicorsaas.com/TokenResource.svc',
-               'centralusdtpilot00.epicorsaas.com/TokenResource.svc'
+               // 'centralusdtadtl03.epicorsaas.com/TokenResource.svc',
+               // 'centralusdtpilot00.epicorsaas.com/TokenResource.svc'
             ]
          }
       }),

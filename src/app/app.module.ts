@@ -46,13 +46,15 @@ export function tokenGetterFn() {
             // tslint:disable-next-line:object-literal-shorthand
             tokenGetter: tokenGetterFn,
             whitelistedDomains: [
+               // just the name of the domain.  no https or * at the end
+               // wildcards domains are not quoted
                'centralusdtpilot00.epicorsaas.com',
                'centralusdtadtl03.epicorsaas.com'
 
             ],
             blacklistedRoutes: [
-               // 'centralusdtadtl03.epicorsaas.com/TokenResource.svc',
-               // 'centralusdtpilot00.epicorsaas.com/TokenResource.svc'
+               'centralusdtadtl03.epicorsaas.com/TokenResource.svc',
+               'centralusdtpilot00.epicorsaas.com/TokenResource.svc'
             ]
          }
       }),

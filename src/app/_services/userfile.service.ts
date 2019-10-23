@@ -8,16 +8,15 @@ import { Userfile } from '../_models/userfile';
   providedIn: 'root'
 })
 export class UserfileService {
-  baseUrl = environment.apiUrl;
   restOfUrl = 'api/v1/Ice.BO.UserFileSvc/UserFiles' +
     '?$select=UserID%2C%20Name%2C%20EMailAddress%2C%20SecurityMgr%2C%20' +
     'UserDisabled%2C%20PasswordEmail';
-  url = this.baseUrl + this.restOfUrl;
+  url = environment.apiUrl + this.restOfUrl;
 
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<Userfile[]> {
-    return this.http.get<Userfile[]>(this.getUrl);
+    return this.http.get<Userfile[]>(this.url);
   }
 
   // TODO: add additional method to get one userfile record

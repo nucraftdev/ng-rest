@@ -16,7 +16,6 @@
         <a class="nav-link" [routerLink]="['/workforce-list']">Workforces</a>
       </li>
     </ul>
-
     <div class="dropdown" *ngIf="loggedIn()" dropdown>
       <a class="dropdown-toggle text-light" dropdownToggle (click)="false">
         Welcome {{authService.decodedToken?.username}}
